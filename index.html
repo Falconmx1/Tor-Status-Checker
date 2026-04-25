@@ -3,26 +3,134 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tor Status Checker</title>
+    <title>Tor Suite Pro - Herramientas Avanzadas</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
-        <h1>🔒 Tor Status Checker</h1>
-        <div class="status-card">
-            <h2>Estado de Tor</h2>
-            <div id="torStatus" class="status">Verificando...</div>
+        <header>
+            <h1>🔒 Tor Suite Pro</h1>
+            <p>Herramientas completas para la red Tor</p>
+        </header>
+
+        <!-- Panel de Control -->
+        <div class="panel">
+            <h2>🎮 Panel de Control Tor</h2>
+            <div class="control-buttons">
+                <button id="checkAllBtn" class="btn primary">🔍 Verificar Todo</button>
+                <button id="clearLogsBtn" class="btn warning">🗑️ Limpiar Logs</button>
+            </div>
+            <div id="connectionLogs" class="logs">
+                <div class="log-entry">⚡ Sistema iniciado - Listo para operar</div>
+            </div>
         </div>
-        <div class="ip-card">
-            <h2>Tu IP Pública</h2>
-            <div id="ipAddress" class="ip">-</div>
-            <button id="checkBtn" class="btn">Verificar IP</button>
+
+        <!-- Estado de Tor -->
+        <div class="card">
+            <h2>🌐 Estado de Tor</h2>
+            <div class="status-grid">
+                <div class="status-item">
+                    <span class="label">Estado General:</span>
+                    <span id="torStatus" class="value checking">Verificando...</span>
+                </div>
+                <div class="status-item">
+                    <span class="label">Tu IP Pública:</span>
+                    <span id="publicIP" class="value">-</span>
+                </div>
+                <div class="status-item">
+                    <span class="label">IP vía Tor:</span>
+                    <span id="torIP" class="value">-</span>
+                </div>
+            </div>
         </div>
-        <div class="info">
-            <p>🌐 Si ves una IP que no es la tuya real, ¡estás usando Tor!</p>
-            <p>⚡ Esta herramienta verifica tu IP a través de check.torproject.org</p>
+
+        <!-- Verificador de Puertos -->
+        <div class="card">
+            <h2>🔌 Verificador de Puertos Tor</h2>
+            <div class="ports-grid">
+                <div class="port-card" data-port="9050">
+                    <span class="port-name">Puerto 9050</span>
+                    <span class="port-status" id="port9050">⏳ Verificando</span>
+                    <span class="port-desc">(Puerto principal Tor)</span>
+                </div>
+                <div class="port-card" data-port="9150">
+                    <span class="port-name">Puerto 9150</span>
+                    <span class="port-status" id="port9150">⏳ Verificando</span>
+                    <span class="port-desc">(Puerto Tor Browser)</span>
+                </div>
+                <div class="port-card" data-port="9040">
+                    <span class="port-name">Puerto 9040</span>
+                    <span class="port-status" id="port9040">⏳ Verificando</span>
+                    <span class="port-desc">(DNS Tor)</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Generador .onion -->
+        <div class="card">
+            <h2>🎲 Generador .onion Falso</h2>
+            <div class="generator-section">
+                <button id="generateOnionBtn" class="btn success">🔄 Generar .onion</button>
+                <div class="onion-display">
+                    <span id="onionAddress" class="onion-addr">presiona el botón</span>
+                    <button id="copyOnionBtn" class="btn small">📋 Copiar</button>
+                </div>
+                <div class="generator-info">
+                    <span>Longitud: <input type="range" id="onionLength" min="16" max="56" value="56"> <span id="lengthValue">56</span> caracteres</span>
+                    <label><input type="checkbox" id="v3Onion"> Formato v3 (56 caracteres)</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Verificador .onion -->
+        <div class="card">
+            <h2>🔍 Verificar Sitio .onion</h2>
+            <div class="onion-checker">
+                <input type="text" id="onionInput" placeholder="ejemplo: facebookcorewwwi.onion" class="input-field">
+                <button id="checkOnionBtn" class="btn primary">Verificar</button>
+                <div id="onionResult" class="result-box"></div>
+            </div>
+        </div>
+
+        <!-- Lista de Relays -->
+        <div class="card">
+            <h2>🔄 Top Relays Activos</h2>
+            <div class="relays-controls">
+                <button id="refreshRelaysBtn" class="btn info">🔄 Actualizar Relays</button>
+                <select id="relayCountry" class="select-field">
+                    <option value="">Todos los países</option>
+                    <option value="US">Estados Unidos</option>
+                    <option value="DE">Alemania</option>
+                    <option value="NL">Países Bajos</option>
+                    <option value="FR">Francia</option>
+                    <option value="CA">Canadá</option>
+                </select>
+            </div>
+            <div id="relaysList" class="relays-list">
+                <div class="loading">Cargando relays...</div>
+            </div>
+        </div>
+
+        <!-- Dashboard Stats -->
+        <div class="dashboard">
+            <h2>📊 Estadísticas</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number" id="onlineRelays">0</div>
+                    <div class="stat-label">Relays Online</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="checkCount">0</div>
+                    <div class="stat-label">Verificaciones</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="onionGenCount">0</div>
+                    <div class="stat-label">Onions Generados</div>
+                </div>
+            </div>
         </div>
     </div>
+
     <script src="script.js"></script>
 </body>
 </html>

@@ -1,27 +1,35 @@
-# 🔒 Tor Status Checker
+# 🔒 Tor Suite Pro
 
-Herramienta web para verificar si estás usando Tor y conocer tu IP pública.
+## 🌟 **Herramienta todo-en-uno para la red Tor**
 
-## 🌟 Características
-- Verifica estado de conexión a Tor
-- Muestra tu IP pública actual
-- Interfaz amigable y responsiva
+### **Características Completas:**
+- ✅ **Verificador de estado Tor** - Comprueba si estás usando Tor
+- ✅ **Verificador de puertos** (9050, 9150, 9040)
+- ✅ **Generador .onion falso** - Para pruebas y aprendizaje
+- ✅ **Verificador de sitios .onion** - Comprueba si están online
+- ✅ **Lista de relays activos** - Top relays de la red Tor
+- ✅ **Panel de control** - Logs y estadísticas en tiempo real
 
-## 🚀 Cómo usar
-1. Abre el archivo `index.html` en tu navegador
-2. La herramienta verificará automáticamente tu estado
-3. Haz clic en "Verificar IP" para actualizar tu IP
+### **🚀 Cómo usar:**
+1. Abre `index.html` en tu navegador
+2. Usa los botones para cada función
+3. El panel de logs muestra todas las acciones
 
-## 📡 APIs utilizadas
-- check.torproject.org - Para verificar Tor
-- ipify.org - Para obtener IP pública
-- httpbin.org - API alternativa
+### **📡 APIs utilizadas:**
+- Tor Project API
+- Onionoo API (relays)
+- ipify.org
 
-## ⚠️ Nota
-Esta herramienta funciona completamente en el navegador, sin necesidad de backend.
+### **⚠️ Nota importante:**
+Algunas funciones son simuladas por limitaciones del navegador. Para verificación real de .onion necesitas Tor Browser.
 
-## 📄 Licencia
-MIT
+### **🔧 Tecnologías:**
+- HTML5
+- CSS3 (Flexbox/Grid)
+- JavaScript ES6+
+- Fetch API
 
-## 👨‍💻 Autor
-Creado para la comunidad Tor
+### **📄 Licencia:**
+MIT - Libre para usar y modificar
+
+### **👨‍💻 Hecho para la comunidad Tor**

@@ -6,96 +6,287 @@
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #1e1e2f 0%, #2d2d44 100%);
     min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     padding: 20px;
 }
 
 .container {
-    background: white;
-    border-radius: 20px;
-    padding: 40px;
-    max-width: 600px;
-    width: 100%;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+header {
     text-align: center;
-}
-
-h1 {
-    color: #333;
+    color: white;
     margin-bottom: 30px;
-    font-size: 2em;
+    padding: 20px;
+    background: rgba(0,0,0,0.3);
+    border-radius: 15px;
 }
 
-.status-card, .ip-card {
-    background: #f8f9fa;
+header h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+header p {
+    opacity: 0.9;
+}
+
+.panel {
+    background: linear-gradient(135deg, #2d2d44, #1e1e2f);
     border-radius: 15px;
     padding: 20px;
     margin-bottom: 20px;
+    border: 1px solid #4a4a6a;
 }
 
-h2 {
-    color: #555;
-    font-size: 1.3em;
+.panel h2, .card h2, .dashboard h2 {
+    color: white;
     margin-bottom: 15px;
+    border-bottom: 2px solid #7c3aed;
+    padding-bottom: 10px;
+    display: inline-block;
 }
 
-.status {
-    font-size: 1.5em;
-    font-weight: bold;
-    padding: 10px;
+.card {
+    background: white;
+    border-radius: 15px;
+    padding: 25px;
+    margin-bottom: 20px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.logs {
+    background: #0a0a0f;
+    color: #00ff9d;
+    padding: 15px;
+    border-radius: 10px;
+    font-family: monospace;
+    font-size: 14px;
+    max-height: 150px;
+    overflow-y: auto;
+    margin-top: 15px;
+}
+
+.log-entry {
+    margin: 5px 0;
+    padding: 5px;
+    border-left: 3px solid #7c3aed;
+    padding-left: 10px;
+}
+
+.status-grid, .ports-grid, .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.status-item {
+    background: #f3f4f6;
+    padding: 15px;
     border-radius: 10px;
 }
 
-.status.connected {
-    color: #28a745;
-    background: #d4edda;
-}
-
-.status.disconnected {
-    color: #dc3545;
-    background: #f8d7da;
-}
-
-.ip {
-    font-size: 1.8em;
+.label {
     font-weight: bold;
-    color: #667eea;
-    margin: 15px 0;
-    font-family: monospace;
+    color: #4b5563;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.value {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #1f2937;
+}
+
+.value.checking {
+    color: #f59e0b;
+}
+
+.port-card {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+    color: white;
+}
+
+.port-name {
+    display: block;
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+.port-status {
+    display: block;
+    font-size: 0.9em;
+    margin: 8px 0;
+}
+
+.port-desc {
+    font-size: 0.8em;
+    opacity: 0.8;
 }
 
 .btn {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
+    padding: 10px 20px;
     border: none;
-    padding: 12px 30px;
-    font-size: 1em;
-    border-radius: 25px;
+    border-radius: 8px;
     cursor: pointer;
-    transition: transform 0.2s;
+    font-weight: bold;
+    transition: transform 0.2s, opacity 0.2s;
+    margin: 5px;
 }
 
 .btn:hover {
-    transform: scale(1.05);
+    transform: translateY(-2px);
+    opacity: 0.9;
 }
 
-.btn:active {
-    transform: scale(0.95);
+.btn.primary {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
 }
 
-.info {
-    margin-top: 20px;
+.btn.success {
+    background: #10b981;
+    color: white;
+}
+
+.btn.warning {
+    background: #f59e0b;
+    color: white;
+}
+
+.btn.info {
+    background: #3b82f6;
+    color: white;
+}
+
+.btn.small {
+    padding: 5px 10px;
+    font-size: 0.85em;
+}
+
+.onion-display {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.onion-addr {
+    background: #1e1e2f;
+    color: #00ff9d;
+    padding: 12px;
+    border-radius: 8px;
+    font-family: monospace;
+    font-size: 1em;
+    flex: 1;
+    word-break: break-all;
+}
+
+.generator-info {
+    margin-top: 15px;
+    padding: 10px;
+    background: #f3f4f6;
+    border-radius: 8px;
+}
+
+.input-field, .select-field {
+    padding: 10px;
+    border: 2px solid #e5e7eb;
+    border-radius: 8px;
+    font-size: 1em;
+    flex: 1;
+}
+
+.onion-checker {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.result-box {
+    margin-top: 15px;
     padding: 15px;
-    background: #e7f3ff;
-    border-radius: 10px;
-    font-size: 0.9em;
-    color: #0066cc;
+    border-radius: 8px;
+    background: #f3f4f6;
+    width: 100%;
 }
 
-.info p {
-    margin: 5px 0;
+.relays-controls {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+}
+
+.relays-list {
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.relay-item {
+    background: #f9fafb;
+    padding: 12px;
+    margin: 8px 0;
+    border-radius: 8px;
+    border-left: 4px solid #10b981;
+    font-size: 0.9em;
+}
+
+.relay-name {
+    font-weight: bold;
+    color: #1f2937;
+}
+
+.relay-details {
+    font-size: 0.85em;
+    color: #6b7280;
+    margin-top: 5px;
+}
+
+.stat-card {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    color: white;
+}
+
+.stat-number {
+    font-size: 2em;
+    font-weight: bold;
+}
+
+.stat-label {
+    font-size: 0.9em;
+    margin-top: 5px;
+    opacity: 0.9;
+}
+
+.loading {
+    text-align: center;
+    padding: 20px;
+    color: #6b7280;
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+    
+    .onion-checker {
+        flex-direction: column;
+    }
+    
+    .status-grid, .ports-grid, .stats-grid {
+        grid-template-columns: 1fr;
+    }
 }

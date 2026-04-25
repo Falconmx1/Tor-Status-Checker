@@ -1,0 +1,101 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.container {
+    background: white;
+    border-radius: 20px;
+    padding: 40px;
+    max-width: 600px;
+    width: 100%;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    text-align: center;
+}
+
+h1 {
+    color: #333;
+    margin-bottom: 30px;
+    font-size: 2em;
+}
+
+.status-card, .ip-card {
+    background: #f8f9fa;
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+h2 {
+    color: #555;
+    font-size: 1.3em;
+    margin-bottom: 15px;
+}
+
+.status {
+    font-size: 1.5em;
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.status.connected {
+    color: #28a745;
+    background: #d4edda;
+}
+
+.status.disconnected {
+    color: #dc3545;
+    background: #f8d7da;
+}
+
+.ip {
+    font-size: 1.8em;
+    font-weight: bold;
+    color: #667eea;
+    margin: 15px 0;
+    font-family: monospace;
+}
+
+.btn {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    font-size: 1em;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.btn:hover {
+    transform: scale(1.05);
+}
+
+.btn:active {
+    transform: scale(0.95);
+}
+
+.info {
+    margin-top: 20px;
+    padding: 15px;
+    background: #e7f3ff;
+    border-radius: 10px;
+    font-size: 0.9em;
+    color: #0066cc;
+}
+
+.info p {
+    margin: 5px 0;
+}
